@@ -1,7 +1,0 @@
-some other sentence
-new project 0.0
-create new feature
-c1 c2 c3 c4 c5
-1.0
-c5 gets tagged with 1.0
-
