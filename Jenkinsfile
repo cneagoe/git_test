@@ -4,9 +4,19 @@ pipeline {
         CI = 'true'
     }
     stages {
-        stage('Prebuild') {
+        stage('Install packages') {
             steps {
-                sh './test.sh'
+                sh 'npm install'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
             }
         }
     }
