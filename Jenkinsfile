@@ -13,7 +13,7 @@ pipeline {
             steps {
                 sh 'npm start'
                 sh 'sleep 10'
-                sh 'curl localhost:3000'
+                sh 'curl -k localhost:3000'
             }
         }
         stage('Build') {
