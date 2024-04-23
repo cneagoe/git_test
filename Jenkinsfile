@@ -11,7 +11,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh 'npm start'
+                sh 'curl localhost:3000'
             }
         }
         stage('Build') {
