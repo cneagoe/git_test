@@ -12,13 +12,14 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'nohup npm start &'
-                sh 'sleep 10'
+                sleep 10
                 sh 'curl -k localhost:3000'
             }
         }
         stage('Build') {
             steps {
                 sh 'npm run build'
+                archiveArtifacts artifacts: './build', followSymlinks: false
             }
         }
     }
