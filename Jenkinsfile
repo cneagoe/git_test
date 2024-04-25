@@ -19,7 +19,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'npm run build'
-                archiveArtifacts artifacts: 'build/*', followSymlinks: false
+                sh 'tar -czvf build.tar.gz build/*'
+                archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
             }
         }
     }
