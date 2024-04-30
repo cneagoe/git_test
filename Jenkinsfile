@@ -31,14 +31,14 @@ pipeline {
         }
         stage('cleanup containers'){
             steps{
-                sh """
+                sh '''
                     rez = $(docker container ls -a | grep app)
                     if docker container ls -a | grep app ;
                     then 
                         docker container stop app
                         docker container rm app
                     fi
-                """
+                '''
                 }
             }
         stage('deploy container'){
