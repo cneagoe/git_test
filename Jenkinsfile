@@ -29,6 +29,15 @@ pipeline {
                 sh 'docker build -t appimg .'
             }
         }
+        stage('cleanup containers'){
+            when {
+                sh 'docker container ls -a | grep app'
+            }
+            steps{
+                sh 'docker container stop app'
+                sh 'docker container rm app'
+            }
+        }
         stage('deploy container'){
             steps{
                 sh 'docker run -d -p 4000:80 --name app appimg'
