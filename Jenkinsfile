@@ -21,6 +21,7 @@ pipeline {
                 sh 'npm run build'
                 sh 'tar -czvf build.tar.gz build/*'
                 archiveArtifacts artifacts: 'build.tar.gz', followSymlinks: false
+                
             }
         }
     }
