@@ -30,12 +30,14 @@ pipeline {
             }
         }
         stage('cleanup containers'){
-            when {
-                sh 'docker container ls -a | grep app'
-            }
             steps{
-                sh 'docker container stop app'
-                sh 'docker container rm app'
+                script{
+                    def output = sh(returnStdout: true, script: 'docker container ls -a | grep app')
+                    if (output){
+                        sh 'docker container stop app'
+                        sh 'docker container rm app'
+                    }
+                }
             }
         }
         stage('deploy container'){
