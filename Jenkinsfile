@@ -32,7 +32,6 @@ pipeline {
         stage('cleanup containers'){
             steps{
                 sh '''
-                    rez = $(docker container ls -a | grep app)
                     if docker container ls -a | grep app ;
                     then 
                         docker container stop app
