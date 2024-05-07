@@ -2,6 +2,9 @@ pipeline {
     agent any
     environment {
         CI = 'true'
+        registry = "ngciprian/appimg"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
     }
     stages {
         stage('install packages') {
@@ -26,7 +29,14 @@ pipeline {
         // stage('publish docker img')
         stage('build docker image'){
             steps{
-                sh 'docker build -t appimg .'
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
+            }
+        }
+        stage('publish docker image'){
+            steps{
+                sh 'echo test'
             }
         }
         stage('cleanup containers'){
@@ -40,7 +50,7 @@ pipeline {
                 '''
                 }
             }
-        stage('deploy container'){
+        stage('deploy image'){
             steps{
                 sh 'docker run -d -p 4000:80 --name app appimg'
                 sleep 10
