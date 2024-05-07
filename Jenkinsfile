@@ -36,7 +36,10 @@ pipeline {
         }
         stage('publish docker image'){
             steps{
-                sh 'echo test'
+                script {
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                }
             }
         }
         stage('cleanup containers'){
