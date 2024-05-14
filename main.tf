@@ -7,6 +7,11 @@ terraform {
     }
   }
 }
+provider "aws" {
+  region     = var.region
+  access_key = "AKIARLKB4QXV4DY3BRV2"
+  secret_key = "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"
+}
 module "vpc" {
   source               = "./modules/vpc"
   vpc_cidr             = "10.0.0.0/16"
