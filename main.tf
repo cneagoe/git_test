@@ -43,7 +43,6 @@ module "ec2" {
   public_subnets   = module.vpc.public_subnets
   ami_id           = data.aws_ami.amazon_linux.id
   instance_type    = "t2.micro"
-  key_name         = "jmac-le-pair"
   webserver_sg_id  = module.alb.alb_sg_id
   target_group_arn = module.alb.target_group_arn
 }

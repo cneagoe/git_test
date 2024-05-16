@@ -26,11 +26,16 @@
     }
 }
 
+resource "aws_key_pair" "deployer" {
+  key_name   = "deployer-key"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDk4Bjh8lQo6oFi1vCdmy2pV27G+Df3UJ7S8wdQalYgP9WdStXGjAajOFeWwAuXIR/5VPyubMoofy01fsXyIAZGqHKfA5S3SfeJzVb5TVQ+3iO4KEeY67a1vmXS6eVigwOylpO9IWnYorJISSSIGrJlX2KJ73A+VCRvsSYrd3wy4B1qkxTunyd1unasoGqxSekh5RMBJ5XbQj6TwC0ldFHMDYNIeBwGDKnrbsPJiO+g1tfn4XhQRGAKig/ausHJ1w3uxAeYOQYc3X8A51624urT5DZQ9elmaqP9GTJFZNHYM+LXs8V2O0tZ0vkAtyi45F2QrW29ElEvfZIl35JZXFMd2vGQiZZiQy7Q06eaG01xAAN8Fyl3XUzA2mpmC22CqrSlVSkT8LKZBe+QmDUkt6sW1PfwwaxxFXlGnSW/qJvrtnMqxU4c12dIkYeShKb3i4U9icBoI7gP79mFOQzUGy0a4Z+9YsuR4plOBQiLRoFABLTLDyMgcPvF7Gv74azGIks= cip@DESKTOP-KJIIPF2"
+}
+
 resource "aws_instance" "webserver2" {
     ami           = var.ami_id
     instance_type = var.instance_type
     subnet_id     = var.public_subnets[1]
-    key_name      = var.key_name
+    key_name      = var.instance_type
 	vpc_security_group_ids = [var.webserver_sg_id]
 	
 	user_data = <<-EOF

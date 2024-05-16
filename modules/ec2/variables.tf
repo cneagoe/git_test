@@ -6,7 +6,7 @@ variable "ami_id" {}
 
 variable "instance_type" {}
 
-variable "key_name" {}
+variable "key_name" { default = "deployer-key" }
 
 variable "webserver_sg_id" {
   description = "Security group ID for the web servers"
