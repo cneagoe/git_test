@@ -35,7 +35,7 @@ data "aws_ami" "amazon_linux" {
     name   = "name"
     values = ["amzn2-ami-hvm-2.0.*-x86_64-gp2"]
   }
-  owners = ["137112412989"] # Amazon
+  owners = ["801119661308"] # Amazon
 }
 
 module "ec2" {
