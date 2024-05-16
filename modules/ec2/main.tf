@@ -35,7 +35,7 @@ resource "aws_instance" "webserver2" {
     ami           = var.ami_id
     instance_type = var.instance_type
     subnet_id     = var.public_subnets[1]
-    key_name      = var.instance_type
+    key_name      = var.key_name
 	vpc_security_group_ids = [var.webserver_sg_id]
 	
 	user_data = <<-EOF
